@@ -2,7 +2,7 @@
 #include<graphics.h>
 using namespace std;
 
-class Circle{
+class Square{
 	
 	private:int x, y, xc, yc, r, d;
 
@@ -24,7 +24,7 @@ class Circle{
 
 				d = 3 - 2*r;
 				do{
-					delay(60);
+					delay(1000);
 					putpixel(x+xc , y+yc , WHITE);
 					putpixel(x+xc , -y+yc , WHITE);
 					putpixel(-x+xc , y+yc , WHITE);
@@ -38,7 +38,6 @@ class Circle{
 					if( d < 0 )
 						d += 4*x + 6;
 					else{
-						y -= 1;
 						d += 4*(x-y) + 10;
 					}
 				}while( x <= y );
@@ -47,8 +46,8 @@ class Circle{
 };
 int main(){
 
-	Circle c1;
-	c1.draw();
+	Square s1;
+	s1.draw();
 	getch();
 	closegraph();
 	return 0;
