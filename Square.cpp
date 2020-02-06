@@ -24,7 +24,7 @@ class Square{
 
 				d = 3 - 2*r;
 				do{
-					delay(1000);
+					delay(60);
 					putpixel(x+xc , y+yc , WHITE);
 					putpixel(x+xc , -y+yc , WHITE);
 					putpixel(-x+xc , y+yc , WHITE);
@@ -38,6 +38,7 @@ class Square{
 					if( d < 0 )
 						d += 4*x + 6;
 					else{
+						//y += 1;
 						d += 4*(x-y) + 10;
 					}
 				}while( x <= y );

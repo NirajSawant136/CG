@@ -21,8 +21,8 @@ class Circle{
 				initgraph(&gd, &gm, NULL);
 				x = 0;
 				y = r;
-
 				d = 3 - 2*r;
+				
 				do{
 					delay(60);
 					putpixel(x+xc , y+yc , WHITE);
