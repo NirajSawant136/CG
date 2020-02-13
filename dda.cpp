@@ -18,6 +18,8 @@ void Line(int x1 , int y1 , int x2 , int y2){
 	float dx = abs(x2 - x1);
 	float dy = abs(y2 - y1);
 
+	int g = (x2 > x1)?1:-1;
+
 	float len = (dx > dy)?dx:dy;
 
 	dx /= len; 
@@ -33,7 +35,7 @@ void Line(int x1 , int y1 , int x2 , int y2){
 	for( int i = 0; i < len ; i++){
 
 		putpixel((int)x , (int)y , WHITE);
-		x += dx;
+		x += g*dx;
 		y += dy;
 	}
 
