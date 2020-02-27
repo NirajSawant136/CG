@@ -7,12 +7,16 @@ class Rect{
 	private:int x, y, l, b;
 
 	public:	
-			void getCor(){
+			void getCor(int x1 , int y1 , int l , int b){
 
-				cout<<"Enter starting cordinate -> ";
-				cin>>x>>y;
-				cout<<"\nEnter length and breath -> ";
-				cin>>l>>b;
+				// cout<<"Enter starting cordinate -> ";
+				// cin>>x>>y;
+				// cout<<"\nEnter length and breath -> ";
+				// cin>>l>>b;
+				this->x = x1;
+				this->y = y1;
+				this->l = l;
+				this->b = b;
 
 				drawShape();
 			}
@@ -58,28 +62,38 @@ class Rect{
 
 				initgraph(&gd , &gm , NULL);
 
-				draw(x, y, l, b);
+				draw();
 
 				delay(5000);
 				closegraph();
 			}
 
-			void draw(int x1, int y1, int l1, int b1){
+			int midpoint(int a, int b){
+
+				return (a+b)/2;
+			}
+
+			void draw(){
 
 				Line(x, y, x+l, y);
 				Line(x, y, x, y+b);
 				Line(x+l, y, x+l, y+b);
 				Line(x, y+b, x+l, y+b);
 
-				Line(x+l/2, y, x+l, y+b/2);
-				Line(x+l, y+b/2, x+l/2, y+b);
-				Line(x+l/2, y+b, x, y+b/2);
-				Line(x, y+b/2, x+l/2, y);
+				Line(midpoint(x, x+l), midpoint(y,y), midpoint(x+l, x+l), midpoint(y,y+b));
+				Line(midpoint(x+l, x+l), midpoint(y,y+b), midpoint(x, x+l), midpoint(y+b,y+b));
+				Line(midpoint(x,x), midpoint(y,y+b), midpoint(x, x+l), midpoint(y+b,y+b));
+				Line(midpoint(x,x+l), midpoint(y,y), midpoint(x, x), midpoint(y,y+b));
+
+				Line(midpoint(x+l/2, x+l), midpoint(y,y+b/2), midpoint(x+l, x+l/2), midpoint(y+b/2,y+b));
+				Line(midpoint(x+l, x+l/2), midpoint(y+b/2,y+b), midpoint(x, x+l/2), midpoint(y+b/2,y+b));
+				Line(midpoint(x, x+l/2), midpoint(y+b/2,y), midpoint(x, x+l/2), midpoint(y+b/2,y+b));
+				Line(midpoint(x, x+l/2), midpoint(y+b/2,y), midpoint(x+l/2, x+l), midpoint(y,y+b/2));
 			}
 };
 int main(int argc, char const *argv[])
 {
 	Rect r;
-	r.getCor();
+	r.getCor(100, 100, 200, 150);
 	return 0;
 }
